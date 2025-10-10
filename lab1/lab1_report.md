@@ -57,40 +57,34 @@ topology:
     R01.TEST:
       kind: vr-ros
       image: vrnetlab/mikrotik_routeros:6.47.9
-      mgmt:
-        ipv4-address: 172.20.20.2
-
-    SW01.L3.01.TEST:
-      kind: vr-ros
-      image: vrnetlab/mikrotik_routeros:6.47.9
-      mgmt:
-        ipv4-address: 172.20.20.3
-
-    SW02.L3.01.TEST:
-      kind: vr-ros
-      image: vrnetlab/mikrotik_routeros:6.47.9
-      mgmt:
-        ipv4-address: 172.20.20.4
-
-    SW02.L3.02.TEST:
-      kind: vr-ros
-      image: vrnetlab/mikrotik_routeros:6.47.9
-      mgmt:
-        ipv4-address: 172.20.20.5
+      mgmt-ipv4: 172.20.20.2
 
     PC1:
       kind: linux
       image: alpine:latest
       cmd: sleep infinity
-      mgmt:
-        ipv4-address: 172.20.20.6
+      mgmt-ipv4: 172.20.20.6
 
     PC2:
       kind: linux
       image: alpine:latest
       cmd: sleep infinity
-      mgmt:
-        ipv4-address: 172.20.20.7
+      mgmt-ipv4: 172.20.20.7
+
+    SW01.L3.01.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt-ipv4: 172.20.20.3
+
+    SW02.L3.01.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt-ipv4: 172.20.20.4
+
+    SW02.L3.02.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt-ipv4: 172.20.20.5
 
   links:
     - endpoints: ["R01.TEST:eth1", "SW01.L3.01.TEST:eth1"]
