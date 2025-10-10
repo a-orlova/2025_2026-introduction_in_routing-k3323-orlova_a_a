@@ -28,3 +28,11 @@ Date of finished: 13.10.2025
 Правила по оформлению отчета по лабораторной работе вы можете изучить по [ссылке](https://itmo-ict-faculty.github.io/introduction-in-routing/education/labs2023_2024/reportdesign/)
 
 # Ход работы
+## Подготовка
+Перед выполнением лабораторной работы было необходимо установить Docker на рабочий компьютер, установить make и склонировать hellt/vrnetlab. Также в проекте hellt/vrnetlab перейти в папку routeros, загрузить в эту папку chr-6.47.9.vmdk и с помощью make docker-image собрать образ. После этого было нужно установить ContainerLab используя специальный скрипт из официального репозитория:
+```
+#download and install the latest release (may require sudo)
+bash -c "$(curl -sL https://get.containerlab.dev)"
+```
+
+<img width="718" height="128" alt="image" src="https://github.com/user-attachments/assets/c102457a-6801-4e26-8c25-91ba601136cb" />
