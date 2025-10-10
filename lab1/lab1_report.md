@@ -103,4 +103,16 @@ CHR (Cloud Hosted Router) — это виртуальная версия опе�
 Она полностью повторяет функциональность обычных роутеров MikroTik, но работает как виртуальная машина.
 В ContainerLab CHR используется через образ vrnetlab/mikrotik_routeros, что позволяет развернуть виртуальный маршрутизатор MikroTik в контейнере.
 
+После команды сборки *sudo containerlab deploy -t ~/containerlab/lab1/*
+<img width="902" height="510" alt="image" src="https://github.com/user-attachments/assets/98a897d4-88cc-4fa2-9461-ec512a2ac592" />
+<img width="1060" height="400" alt="image" src="https://github.com/user-attachments/assets/d57dc2c9-0e48-47d1-a94f-1c98aadab8b9" />
+
+## Схема связи
+С помощью команды *sudo containerlab graph -t ~/containerlab/lab1/lab1.yaml -o lab1-topology.svg* в браузере можно открыть готовую схему сети:
+
+<img width="1082" height="774" alt="image" src="https://github.com/user-attachments/assets/0871c5dc-2b6a-4a72-8129-4a8f2cad0ce9" />
+
+
+
+
 
