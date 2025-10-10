@@ -49,3 +49,59 @@ bash -c "$(curl -sL https://get.containerlab.dev)"
 | SW02.L3.02.TEST    | коммутатор 2го уровня.2   | eth1 — к SW01, eth2 — к PC2   |
 | PC1, PC2           | конечные устройства - пк | eth1 — к своему SW02 |
 
+```
+name: lab1-test-network
+
+topology:
+  nodes:
+    R01.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt:
+        ipv4-address: 172.20.20.2
+
+    SW01.L3.01.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt:
+        ipv4-address: 172.20.20.3
+
+    SW02.L3.01.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt:
+        ipv4-address: 172.20.20.4
+
+    SW02.L3.02.TEST:
+      kind: vr-ros
+      image: vrnetlab/mikrotik_routeros:6.47.9
+      mgmt:
+        ipv4-address: 172.20.20.5
+
+    PC1:
+      kind: linux
+      image: alpine:latest
+      cmd: sleep infinity
+      mgmt:
+        ipv4-address: 172.20.20.6
+
+    PC2:
+      kind: linux
+      image: alpine:latest
+      cmd: sleep infinity
+      mgmt:
+        ipv4-address: 172.20.20.7
+
+  links:
+    - endpoints: ["R01.TEST:eth1", "SW01.L3.01.TEST:eth1"]
+    - endpoints: ["SW01.L3.01.TEST:eth2", "SW02.L3.01.TEST:eth1"]
+    - endpoints: ["SW01.L3.01.TEST:eth3", "SW02.L3.02.TEST:eth1"]
+    - endpoints: ["SW02.L3.01.TEST:eth2", "PC1:eth1"]
+    - endpoints: ["SW02.L3.02.TEST:eth2", "PC2:eth1"]
+
+mgmt:
+  network: static
+  ipv4-subnet: 172.20.20.0/24
+
+```
+
