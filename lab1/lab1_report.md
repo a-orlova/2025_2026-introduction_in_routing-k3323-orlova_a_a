@@ -105,6 +105,9 @@ mgmt: #это сеть, используемая для управления и 
 
 <img width="1082" height="774" alt="image" src="https://github.com/user-attachments/assets/0871c5dc-2b6a-4a72-8129-4a8f2cad0ce9" />
 
+Также по заданию была составлена схема сети в draw.io:
+<img width="1280" height="995" alt="image" src="https://github.com/user-attachments/assets/5b394ae8-4d7b-44ef-89af-ae3a224fe2dd" />
+
 ## Роутер R1
 <img width="1000" height="630" alt="image" src="https://github.com/user-attachments/assets/2d2da0f3-5630-4b37-9dfa-191910c46375" />
 
@@ -146,7 +149,24 @@ mgmt: #это сеть, используемая для управления и 
 <img width="1143" height="184" alt="image" src="https://github.com/user-attachments/assets/bb3db60c-d956-4681-a31f-2d2c2034ea00" />
 <img width="1136" height="290" alt="image" src="https://github.com/user-attachments/assets/6c726eed-fdf3-4714-9e31-2fdd0c13cdec" />
 
+## PC1 и PC2
+
+Остается организовать связь между двумя компьютерами, которые находятся в разных VLAN. Сначала подключилась к каждому из пк:
+```
+sudo docker exec -it clab-lab1-test-network-PC1 sh
+sudo docker exec -it clab-lab1-test-network-PC2 sh
+```
+И в каждом из них настравиаю итоговый маршрут связи между друг другом:
+```
+# PC1
+ip route add 172.17.20.0/24 via 172.17.10.1 dev eth1
+# PC2
+ip route add 172.17.10.0/24 via 172.17.20.1 dev eth1
+```
+
 ## Результаты пинга
+<img width="756" height="277" alt="image" src="https://github.com/user-attachments/assets/0d93b647-84f3-456b-b5a9-7f95fad31c5c" />
+
 <img width="1000" height="151" alt="image" src="https://github.com/user-attachments/assets/b1374839-0366-4743-8c4e-2b21938f567c" />
 
 <img width="710" height="639" alt="image" src="https://github.com/user-attachments/assets/2a57b7ac-6dde-4b23-be67-5523035989fb" />
