@@ -140,8 +140,24 @@ CHR (Cloud Hosted Router) — это виртуальная версия опе�
 ## SW02.1
 <img width="1061" height="372" alt="image" src="https://github.com/user-attachments/assets/1b7dca9d-f655-45a9-9376-701a2ede8896" />
 
+- создаю логический мост
+- создаю и настраиваю влан
+- классический профиль безопасности
+- добавляю интерфейсы в мост
+- настройка dhcp клиентов
+- меняю имя системы
 
 ## SW02.2
+
+Здесь происходит все то же самое, что и с предыдущим свичом:
+<img width="1143" height="184" alt="image" src="https://github.com/user-attachments/assets/bb3db60c-d956-4681-a31f-2d2c2034ea00" />
+<img width="1136" height="290" alt="image" src="https://github.com/user-attachments/assets/6c726eed-fdf3-4714-9e31-2fdd0c13cdec" />
+
+## Результаты пинга
+<img width="1000" height="151" alt="image" src="https://github.com/user-attachments/assets/b1374839-0366-4743-8c4e-2b21938f567c" />
+
+<img width="710" height="639" alt="image" src="https://github.com/user-attachments/assets/2a57b7ac-6dde-4b23-be67-5523035989fb" />
+<img width="687" height="197" alt="image" src="https://github.com/user-attachments/assets/ab58a099-a7af-4ab9-a23f-d24744fe72d1" />
 
 
 
