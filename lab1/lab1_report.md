@@ -171,11 +171,10 @@ ip route add 172.17.10.0/24 via 172.17.20.1 dev eth1
 
 ## Результаты пинга
 <img width="756" height="277" alt="image" src="https://github.com/user-attachments/assets/0d93b647-84f3-456b-b5a9-7f95fad31c5c" />
+<img width="688" height="343" alt="image" src="https://github.com/user-attachments/assets/ff330be7-cc5a-4b8e-b625-4a5eebd6422b" />
 
-<img width="1000" height="151" alt="image" src="https://github.com/user-attachments/assets/b1374839-0366-4743-8c4e-2b21938f567c" />
+<img width="718" height="320" alt="image" src="https://github.com/user-attachments/assets/3bfff4fd-485e-4819-b793-1411b0e59f59" />
 
-<img width="710" height="639" alt="image" src="https://github.com/user-attachments/assets/2a57b7ac-6dde-4b23-be67-5523035989fb" />
-<img width="687" height="197" alt="image" src="https://github.com/user-attachments/assets/ab58a099-a7af-4ab9-a23f-d24744fe72d1" />
 
 
 
