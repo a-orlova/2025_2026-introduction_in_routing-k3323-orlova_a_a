@@ -164,6 +164,11 @@ ip route add 172.17.20.0/24 via 172.17.10.1 dev eth1
 ip route add 172.17.10.0/24 via 172.17.20.1 dev eth1
 ```
 
+## Смена имен и паролей
+
+Чтобы добавить нового пользователя нужно использовать следующую команду:
+<img width="555" height="43" alt="image" src="https://github.com/user-attachments/assets/a15327c7-50bd-4d41-a052-c07f2f25f134" />
+
 ## Результаты пинга
 <img width="756" height="277" alt="image" src="https://github.com/user-attachments/assets/0d93b647-84f3-456b-b5a9-7f95fad31c5c" />
 
