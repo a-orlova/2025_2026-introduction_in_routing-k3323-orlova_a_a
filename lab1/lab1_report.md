@@ -14,18 +14,15 @@ Lab: Lab1
 
 Date of create: 10.10.2025
 
-Date of finished: 13.10.2025
+Date of finished: 20.10.2025
 
 # Лабораторная работа №1 "Установка ContainerLab и развертывание тестовой сети связи"
-# Оглавление
+
 # Описание
 В данной лабораторной работе вы познакомитесь с инструментом ContainerLab, развернете тестовую сеть связи, настроите оборудование на базе Linux и RouterOS.
 
 # Цель работы
 Ознакомиться с инструментом ContainerLab и методами работы с ним, изучить работу VLAN, IP адресации и т.д.
-
-# Правила по оформлению
-Правила по оформлению отчета по лабораторной работе вы можете изучить по [ссылке](https://itmo-ict-faculty.github.io/introduction-in-routing/education/labs2023_2024/reportdesign/)
 
 # Ход работы
 ## Подготовка
@@ -98,10 +95,6 @@ mgmt: #это сеть, используемая для управления и 
   ipv4-subnet: 172.20.20.0/24
 
 ```
-
-CHR (Cloud Hosted Router) — это виртуальная версия операционной системы RouterOS от MikroTik, предназначенная для установки в облачных и виртуальных средах.
-Она полностью повторяет функциональность обычных роутеров MikroTik, но работает как виртуальная машина.
-В ContainerLab CHR используется через образ vrnetlab/mikrotik_routeros, что позволяет развернуть виртуальный маршрутизатор MikroTik в контейнере.
 
 После команды сборки *sudo containerlab deploy -t ~/containerlab/lab1/*
 <img width="902" height="510" alt="image" src="https://github.com/user-attachments/assets/98a897d4-88cc-4fa2-9461-ec512a2ac592" />
