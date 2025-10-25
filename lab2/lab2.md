@@ -157,3 +157,18 @@ ip route add default via 10.10.0.1 dev eth1
 
 # Результаты
 
+Успешный деплой проекта:
+<img width="898" height="747" alt="image" src="https://github.com/user-attachments/assets/ca3a48b6-8c4b-4e53-a9d9-4edf4450b99f" />
+
+Успешная раздача айпишников через dhcp-сервер, сохраненные прописанные маршруты на роутере, доступность роутеров друг между другом:
+
+<img width="796" height="550" alt="image" src="https://github.com/user-attachments/assets/5b38f6c9-9087-4b78-8625-619aecdf82af" />
+
+Успешное получение ПК апйишников от dhcp-сервера и пинг между ними:
+
+<img width="607" height="610" alt="image" src="https://github.com/user-attachments/assets/f2c57c9a-bbd4-47bf-afbe-fe928c054a44" />
+
+<img width="611" height="596" alt="image" src="https://github.com/user-attachments/assets/6e80a318-b2c9-414c-ba76-8c0940df6807" />
+
+<img width="612" height="599" alt="image" src="https://github.com/user-attachments/assets/b952469a-7506-43a4-bc50-085032a4d668" />
+
