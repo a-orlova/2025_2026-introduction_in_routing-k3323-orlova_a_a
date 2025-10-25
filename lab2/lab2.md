@@ -154,3 +154,6 @@ udhcpc -i eth1 -q
 ip route del default via 172.50.0.1 dev eth0
 ip route add default via 10.10.0.1 dev eth1
 ```
+
+# Результаты
+
