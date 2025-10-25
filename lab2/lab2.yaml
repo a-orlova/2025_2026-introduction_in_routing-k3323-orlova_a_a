@@ -47,9 +47,9 @@ topology:
         - sh /configs/pc3.sh
 
   links:
-    - endpoints: ["R01.BRL:eth1","R01.MSK:eth2"]
+    - endpoints: ["R01.BRL:eth1","R01.MSK:eth1"]
     - endpoints: ["R01.BRL:eth2","R01.FRT:eth1"]
-    - endpoints: ["R01.MSK:eth1","R01.FRT:eth2"]
+    - endpoints: ["R01.MSK:eth2","R01.FRT:eth2"]
     - endpoints: ["R01.BRL:eth3","PC3:eth1"]
     - endpoints: ["R01.FRT:eth3","PC2:eth1"]
     - endpoints: ["R01.MSK:eth3","PC1:eth1"]
