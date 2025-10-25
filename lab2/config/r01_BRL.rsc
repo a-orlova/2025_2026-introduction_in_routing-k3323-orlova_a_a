@@ -20,5 +20,5 @@ add dst-address 10.20.0.0/24 gateway=192.168.23.2
 set name=R_BRL
 
 /user
-add name=staffeev password=strongpassword group=full
+add name=alena password=alena group=full
 remove admin
