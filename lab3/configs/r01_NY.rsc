@@ -44,7 +44,7 @@ add interface=ether2
 add interface=ether3
 
 /interface vpls
-add name=vpls_SPB remote-peer=10.255.3.254 vpls-id=100:1 disabled=no
+add name=vpls_SPB remote-peer=10.255.5.254 vpls-id=100:1 disabled=no
 
 /interface bridge port
 add bridge=loopback interface=ether4
