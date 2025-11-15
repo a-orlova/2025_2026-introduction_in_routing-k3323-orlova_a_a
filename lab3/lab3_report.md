@@ -34,7 +34,7 @@ Date of finished: 17.11.2025
 name: lab3
 mgmt:
   network: new_mgmt
-  ipv4-subnet: 172.20.20.0/24
+  ipv4-subnet: 172.20.0.0/24
 
 topology:
   kinds:
