@@ -107,7 +107,91 @@ topology:
 
 ### Конфигурация роутеров
 
+На примере Нью-Йорка опишу конфиги для всех роутеров.
 
+Сначала меняю имя системы:
+```
+/system identity
+set name=r_NY
+```
+
+Добавляю нового пользователя, удаляю админа:
+```
+/user
+add name=alena password=alena group=full
+remove admin
+```
+
+Далее создаю ip-адреса на интерфейсах роутера согласно схеме:
+```
+/ip address add address=10.0.17.2/24 interface=ether2
+/ip address add address=10.0.16.2/24 interface=ether3
+/ip address add address=192.168.20.1/24 interface=ether4
+```
+
+DHCP-сервер настраивается как обычно на роутерах в Нью-Йорке и Санкт-Петербруге:
+```
+/ip pool
+add name=ny_pool ranges=192.168.20.100-192.168.20.254
+
+/ip dhcp-server network
+add address=192.168.20.0/24 gateway=192.168.20.1
+
+/ip dhcp-server
+add address-pool=ny_pool disabled=no interface=ether4 name=ds_ny
+```
+
+#### Настройка динамической маршрутизации OSPF
+
+bridge loopback создается на каждом роутере, такой виртуальный интерфейс никогда не отключается без внешнего вмешательства. Также каждому маршрутизатору даю loopback 10.255.X.254/32 (где X уникален для маршрутизатора) и использую его как router-id в OSPF:
+```
+/interface bridge
+add name=loopback
+
+/ip address
+add address=10.255.6.254/32 interface=loopback
+```
+
+Указываю в router-id адрес loopback интерфейса, создаю зону - так как роутеров всего 6, достаточно одной зоны для всех, и также указываю имя зоны, а в сетях все физические подключения:
+```
+/routing ospf instance
+add name=inst router-id=10.255.6.254
+
+/routing ospf area
+add name=backbone area-id=0.0.0.0 instance=inst
+
+/routing ospf network
+add area=backbone network=10.20.16.0/30
+add area=backbone network=10.20.17.0/30
+add area=backbone network=192.168.20.0/24
+add area=backbone network=10.255.6.254/32
+```
+
+#### Настройка MPLS
+
+Здесь включаю протокол LDP на каждом роутере, прописываю LSR-id и указываю интерфейсы, на которых будет работать MPLS. transport-address пишу тот же, что и адрес loopback для удобства, в lsr-id тоже указываю его:
+
+```
+/mpls ldp
+set enabled=yes lsr-id=10.255.6.254 transport-address=10.255.6.254
+
+/mpls ldp interface
+add interface=ether2
+add interface=ether3
+```
+
+#### Настройка VPLS
+
+Разницы между EoMPLS и VPLS нет в RouteOs, поэтому здесь делаю настройку VPLS - это нужно только на питерском и американском роутерах. Сначала создается специальный интерфейс, затем в bridge loopback добавляется физический интерфейс, ведущий в рабочую сеть, и VPLS-интерфейс:
+
+```
+/interface vpls
+add name=vpls_SPB remote-peer=10.255.3.254 vpls-id=100:1 disabled=no
+
+/interface bridge port
+add bridge=loopback interface=ether4
+add bridge=loopback interface=vpls_SPB
+```
 
 ### Конфигурация ПК
 
