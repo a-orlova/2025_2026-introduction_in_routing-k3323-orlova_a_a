@@ -97,5 +97,18 @@ topology:
 
 Также создаю схему сети в draw.io:
 
+![Схема сети](images/lab3_scheme.jpg)
+
+С помощью команды sudo containerlab graph -t ~/containerlab/lab3/lab3.yaml -o lab3-topology.svg в браузере можно открыть готовую схему сети:
+
+???
+
+## Configs
+
+### Конфигурация роутеров
+
+### Конфигурация ПК
+
+# Результаты
 
 
