@@ -31,8 +31,8 @@ add name=inst router-id=10.255.5.254
 add name=backbone area-id=0.0.0.0 instance=inst
 
 /routing ospf network
-add area=backbone network=10.20.11.0/24
-add area=backbone network=10.20.12.0/24
+add area=backbone network=10.0.11.0/24
+add area=backbone network=10.0.12.0/24
 add area=backbone network=192.168.10.0/24
 add area=backbone network=10.255.5.254/32
 
@@ -43,10 +43,13 @@ set enabled=yes lsr-id=10.255.5.254 transport-address=10.255.5.254
 add interface=ether2
 add interface=ether3
 
+/interface bridge
+add name=vpn
+
 /interface vpls
 add name=vpls_NY remote-peer=10.255.6.254 vpls-id=100:1 disabled=no
 
 /interface bridge port
-add bridge=loopback interface=ether4
-add bridge=loopback interface=vpls_NY
+add bridge=vpn interface=ether4
+add bridge=vpn interface=vpls_NY
 
