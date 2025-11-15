@@ -10,7 +10,7 @@ Group: K3323
 
 Author: Orlova Alena Aleksandrovna
 
-Lab: Lab1
+Lab: Lab3
 
 Date of create: 15.11.2025
 
@@ -25,3 +25,68 @@ Date of finished: 17.11.2025
 Изучить протоколы OSPF и MPLS, механизмы организации EoMPLS.
 
 # Ход работы
+
+## Схема сети
+
+Описываю схему сети в файле lab3.yaml в соответствии с заданием.
+
+```
+name: lab3
+mgmt:
+  network: new_mgmt
+  ipv4-subnet: 172.20.20.0/24
+
+topology:
+  kinds:
+    vr-ros:
+      image: vrnetlab/mikrotik_routeros:6.47.9
+
+  nodes:
+    R01.LND:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.2
+      startup-config: configs/r01_LND.rsc
+    R01.HKI:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.3
+      startup-config: configs/r01_HKI.rsc
+    R01.SPB:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.4
+      startup-config: configs/r01_SPB.rsc
+    R01.MSK:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.5
+      startup-config: configs/r01_MSK.rsc
+    R01.LBN:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.6
+      startup-config: configs/r01_LBN.rsc
+    R01.NY:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.7
+      startup-config: configs/r01_NY.rsc
+    PC1:
+      kind: linux
+      image: alpine:latest
+      mgmt-ipv4: 172.20.0.101
+      binds:
+        - ./configs:/configs
+      exec:
+        - sh /configs/pc1.sh
+    SGI_Prism:
+      kind: linux
+      mgmt-ipv4: 172.50.0.102
+      binds:
+        - ./configs:/configs
+      exec:
+        - sh /configs/sgi_prism.sh
+
+  links:
+    - endpoints: ["R01.BRL:eth1","R01.MSK:eth2"]
+    - endpoints: ["R01.BRL:eth2","R01.FRT:eth1"]
+    - endpoints: ["R01.MSK:eth1","R01.FRT:eth2"]
+    - endpoints: ["R01.BRL:eth3","PC3:eth1"]
+    - endpoints: ["R01.FRT:eth3","PC2:eth1"]
+    - endpoints: ["R01.MSK:eth3","PC1:eth1"]
+```
