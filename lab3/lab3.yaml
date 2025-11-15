@@ -1,1 +1,61 @@
+name: lab3
+mgmt:
+  network: new_mgmt
+  ipv4-subnet: 172.20.0.0/24
 
+topology:
+  kinds:
+    vr-ros:
+      image: vrnetlab/mikrotik_routeros:6.47.9
+
+  nodes:
+    R01.LND:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.2
+      startup-config: configs/r01_LND.rsc
+    R01.HKI:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.3
+      startup-config: configs/r01_HKI.rsc
+    R01.SPB:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.4
+      startup-config: configs/r01_SPB.rsc
+    R01.MSK:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.5
+      startup-config: configs/r01_MSK.rsc
+    R01.LBN:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.6
+      startup-config: configs/r01_LBN.rsc
+    R01.NY:
+      kind: vr-ros
+      mgmt-ipv4: 172.20.0.7
+      startup-config: configs/r01_NY.rsc
+    PC1:
+      kind: linux
+      image: alpine:latest
+      mgmt-ipv4: 172.20.0.101
+      binds:
+        - ./configs:/configs
+      exec:
+        - sh /configs/pc1.sh
+    SGI_Prism:
+      kind: linux
+      mgmt-ipv4: 172.20.0.102
+      binds:
+        - ./configs:/configs
+      exec:
+        - sh /configs/sgi_prism.sh
+
+  links:
+    - endpoints: ["R01.LBN:eth1", "R01.NY:eth1"]
+    - endpoints: ["R01.LBN:eth2", "R01.MSK:eth2"]
+    - endpoints: ["R01.LBN:eth3", "R01.HKI:eth3"]
+    - endpoints: ["R01.SPB:eth1", "R01.MSK:eth1"]
+    - endpoints: ["R01.SPB:eth2", "R01.HKI:eth2"]
+    - endpoints: ["R01.SPB:eth3", "PC1:eth1"]
+    - endpoints: ["R01.NY:eth2", "R01.LND:eth2"]
+    - endpoints: ["R01.NY:eth3", "SGI_Prism:eth1"]
+    - endpoints: ["R01.LND:eth1", "R01.HKI:eth1"]
