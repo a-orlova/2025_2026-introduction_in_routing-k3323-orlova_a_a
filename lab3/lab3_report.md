@@ -76,7 +76,7 @@ topology:
         - sh /configs/pc1.sh
     SGI_Prism:
       kind: linux
-      mgmt-ipv4: 172.50.0.102
+      mgmt-ipv4: 172.20.0.102
       binds:
         - ./configs:/configs
       exec:
