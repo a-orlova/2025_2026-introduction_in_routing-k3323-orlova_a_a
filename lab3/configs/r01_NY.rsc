@@ -31,8 +31,8 @@ add name=inst router-id=10.255.6.254
 add name=backbone area-id=0.0.0.0 instance=inst
 
 /routing ospf network
-add area=backbone network=10.20.16.0/30
-add area=backbone network=10.20.17.0/30
+add area=backbone network=10.20.16.0/24
+add area=backbone network=10.20.17.0/24
 add area=backbone network=192.168.20.0/24
 add area=backbone network=10.255.6.254/32
 
