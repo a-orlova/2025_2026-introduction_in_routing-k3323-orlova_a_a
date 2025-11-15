@@ -10,7 +10,7 @@ Group: K3323
 
 Author: Orlova Alena Aleksandrovna
 
-Lab: Lab1
+Lab: Lab2
 
 Date of create: 24.10.2025
 
