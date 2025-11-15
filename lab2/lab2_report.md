@@ -94,7 +94,8 @@ topology:
 
 С помощью команды sudo containerlab graph -t ~/containerlab/lab2/lab2.yaml -o lab2-topology.svg в браузере можно открыть готовую схему сети:
 
-???
+<img width="1060" height="614" alt="image" src="https://github.com/user-attachments/assets/0b200ae3-9343-42a2-98dc-ef3f193b31e5" />
+
 
 ## Configs
 
