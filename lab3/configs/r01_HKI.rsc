@@ -6,9 +6,9 @@ add name=alena password=alena group=full
 remove admin
 
 /ip address
-add address=10.0.13.1/24 interface=ether2
-add address=10.0.11.1/24 interface=ether3
-add address=10.0.14.1/24 interface=ether4
+add address=10.0.13.3/24 interface=ether2
+add address=10.0.11.3/24 interface=ether3
+add address=10.0.14.3/24 interface=ether4
 
 /interface bridge
 add name=loopback
