@@ -209,7 +209,6 @@ ip route del default via 172.30.0.1 dev eth0
 
 Успешный деплой проекта:
 
-<img width="917" height="740" alt="image" src="https://github.com/user-attachments/assets/4ebc8971-68d6-4d4b-95dc-e78be7367c5b" />
 
 
 
