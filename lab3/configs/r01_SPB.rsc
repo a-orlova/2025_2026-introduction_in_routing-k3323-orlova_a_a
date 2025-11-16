@@ -6,7 +6,7 @@ add name=alena password=alena group=full
 remove admin
 
 /ip address add address=10.0.12.1/24 interface=ether2
-/ip address add address=10.0.11.2/24 interface=ether3
+/ip address add address=10.0.11.1/24 interface=ether3
 /ip address add address=192.168.10.1/24 interface=ether4
 
 /ip pool
