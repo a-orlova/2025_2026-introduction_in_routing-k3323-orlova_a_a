@@ -1,7 +1,7 @@
 name: lab3
 mgmt:
-  network: mgmt_alena
-  ipv4-subnet: 172.30.0.0/24
+  network: alena_mgmt
+  ipv4-subnet: 172.16.16.0/24
 
 topology:
   kinds:
@@ -9,46 +9,47 @@ topology:
       image: vrnetlab/mikrotik_routeros:6.47.9
 
   nodes:
-    R01.LND:
-      kind: vr-ros
-      mgmt-ipv4: 172.30.0.2
-      startup-config: configs/r01_LND.rsc
-    R01.HKI:
-      kind: vr-ros
-      mgmt-ipv4: 172.30.0.3
-      startup-config: configs/r01_HKI.rsc
     R01.SPB:
       kind: vr-ros
-      mgmt-ipv4: 172.30.0.4
-      startup-config: configs/r01_SPB.rsc
+      mgmt-ipv4: 172.16.16.101
+      startup-config: config/r01_SPB.rsc
+    R01.HKI:
+      kind: vr-ros
+      mgmt-ipv4: 172.16.16.102
+      startup-config: config/r01_HKI.rsc
     R01.MSK:
       kind: vr-ros
-      mgmt-ipv4: 172.30.0.5
-      startup-config: configs/r01_MSK.rsc
+      mgmt-ipv4: 172.16.16.103
+      startup-config: config/r01_MSK.rsc
+    R01.LND:
+      kind: vr-ros
+      mgmt-ipv4: 172.16.16.104
+      startup-config: config/r01_LND.rsc
     R01.LBN:
       kind: vr-ros
-      mgmt-ipv4: 172.30.0.6
-      startup-config: configs/r01_LBN.rsc
+      mgmt-ipv4: 172.16.16.105
+      startup-config: config/r01_LBN.rsc
     R01.NY:
       kind: vr-ros
-      mgmt-ipv4: 172.30.0.7
-      startup-config: configs/r01_NY.rsc
+      mgmt-ipv4: 172.16.16.106
+      startup-config: config/r01_NY.rsc
     PC1:
       kind: linux
       image: alpine:latest
-      mgmt-ipv4: 172.30.0.101
+      mgmt-ipv4: 172.16.16.2
       binds:
-        - ./configs:/configs
+        - ./config:/config
       exec:
-        - sh /configs/pc1.sh
+        - sh /config/pc1.sh
     SGI_Prism:
       kind: linux
       image: alpine:latest
-      mgmt-ipv4: 172.30.0.102
+      mgmt-ipv4: 172.16.16.3
       binds:
-        - ./configs:/configs
+        - ./config:/config
       exec:
-        - sh /configs/sgi_prism.sh
+        - sh /config/sgi_prism.sh
+
 
   links:
     - endpoints: ["R01.SPB:eth1","R01.HKI:eth1"]
@@ -60,4 +61,5 @@ topology:
     - endpoints: ["R01.LND:eth2","R01.NY:eth1"]
     - endpoints: ["R01.LBN:eth3","R01.NY:eth2"]
     - endpoints: ["R01.NY:eth3", "SGI_Prism:eth1"]
-
+    
+    
