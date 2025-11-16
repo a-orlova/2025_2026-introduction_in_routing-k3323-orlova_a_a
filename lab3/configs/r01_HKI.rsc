@@ -25,7 +25,7 @@ add area=backbone network=10.0.15.0/24
 add area=backbone network=10.255.255.2/32
 
 /mpls ldp
-set enabled=yes lsr-id=10.255.255.2transport-address=10.255.255.2
+set enabled=yes lsr-id=10.255.255.2 transport-address=10.255.255.2
 
 /mpls ldp interface
 add interface=ether2
