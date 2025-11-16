@@ -98,7 +98,7 @@ topology:
 
 Также создаю схему сети в draw.io:
 
-![Схема сети](images/lab3_routing_scheme.jpg)
+![Схема сети](images/scheme_lab3.jpg)
 
 С помощью команды sudo containerlab graph -t ~/containerlab/lab3/lab3.yaml -o lab3-topology.svg в браузере можно открыть готовую схему сети:
 
