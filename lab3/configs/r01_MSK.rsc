@@ -1,33 +1,29 @@
 /system identity
 set name=r_MSK
-
 /user
 add name=alena password=alena group=full
 remove admin
 
 /ip address
 add address=10.0.12.2/24 interface=ether2
-add address=10.0.15.2/24 interface=ether3
+add address=10.0.14.1/24 interface=ether3
 
 /interface bridge
 add name=loopback
-
 /ip address
-add address=10.255.4.254/32 interface=loopback
+add address=10.255.255.3/32 interface=loopback network=10.255.255.3
 
 /routing ospf instance
-add name=inst router-id=10.255.4.254
-
+add name=inst router-id=10.255.255.3
 /routing ospf area
 add name=backbone area-id=0.0.0.0 instance=inst
-
 /routing ospf network
 add area=backbone network=10.0.12.0/24
-add area=backbone network=10.0.15.0/24
-add area=backbone network=10.255.4.254/32
+add area=backbone network=10.0.14.0/24
+add area=backbone network=10.255.255.3/32
 
 /mpls ldp
-set enabled=yes lsr-id=10.255.4.254 transport-address=10.255.4.254
+set enabled=yes lsr-id=10.255.255.3 transport-address=10.255.255.3
 
 /mpls ldp interface
 add interface=ether2
