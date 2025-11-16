@@ -17,12 +17,12 @@ add address=10.255.255.2/32 interface=loopback network=10.255.255.2
 /routing ospf instance
 add name=inst router-id=10.255.255.2
 /routing ospf area
-add name=backbone area-id=0.0.0.0 instance=inst
+add name=backbonev2 area-id=0.0.0.0 instance=inst
 /routing ospf network
-add area=backbone network=10.20.1.0/30
-add area=backbone network=10.20.3.0/30
-add area=backbone network=10.20.5.0/30
-add area=backbone network=10.255.255.2/32
+add area=backbonev2 network=10.20.1.0/30
+add area=backbonev2 network=10.20.3.0/30
+add area=backbonev2 network=10.20.5.0/30
+add area=backbonev2 network=10.255.255.2/32
 
 /mpls ldp
 set lsr-id=10.255.255.2
