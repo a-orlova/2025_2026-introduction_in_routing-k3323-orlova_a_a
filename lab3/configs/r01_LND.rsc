@@ -5,8 +5,8 @@ set name=r_LND
 add name=alena password=alena group=full
 remove admin
 
-/ip address add address=10.0.13.2/24 interface=ether2
-/ip address add address=10.0.16.2/24 interface=ether3
+/ip address add address=10.0.13.5/24 interface=ether2
+/ip address add address=10.0.16.5/24 interface=ether3
 
 /interface bridge
 add name=loopback
