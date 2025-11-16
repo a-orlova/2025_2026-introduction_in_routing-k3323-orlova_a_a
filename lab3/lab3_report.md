@@ -33,8 +33,8 @@ Date of finished: 17.11.2025
 ```
 name: lab3
 mgmt:
-  network: new_mgmt
-  ipv4-subnet: 172.20.0.0/24
+  network: mgmt_alena
+  ipv4-subnet: 172.30.0.0/24
 
 topology:
   kinds:
@@ -44,19 +44,19 @@ topology:
   nodes:
     R01.LND:
       kind: vr-ros
-      mgmt-ipv4: 172.20.0.2
+      mgmt-ipv4: 172.30.0.2
       startup-config: configs/r01_LND.rsc
     R01.HKI:
       kind: vr-ros
-      mgmt-ipv4: 172.20.0.3
+      mgmt-ipv4: 172.30.0.3
       startup-config: configs/r01_HKI.rsc
     R01.SPB:
       kind: vr-ros
-      mgmt-ipv4: 172.20.0.4
+      mgmt-ipv4: 172.30.0.4
       startup-config: configs/r01_SPB.rsc
     R01.MSK:
       kind: vr-ros
-      mgmt-ipv4: 172.20.0.5
+      mgmt-ipv4: 172.30.0.5
       startup-config: configs/r01_MSK.rsc
     R01.LBN:
       kind: vr-ros
@@ -64,31 +64,32 @@ topology:
       startup-config: configs/r01_LBN.rsc
     R01.NY:
       kind: vr-ros
-      mgmt-ipv4: 172.20.0.7
+      mgmt-ipv4: 172.30.0.7
       startup-config: configs/r01_NY.rsc
     PC1:
       kind: linux
       image: alpine:latest
-      mgmt-ipv4: 172.20.0.101
+      mgmt-ipv4: 172.30.0.101
       binds:
         - ./configs:/configs
       exec:
         - sh /configs/pc1.sh
     SGI_Prism:
       kind: linux
-      mgmt-ipv4: 172.20.0.102
+      image: alpine:latest
+      mgmt-ipv4: 172.30.0.102
       binds:
         - ./configs:/configs
       exec:
         - sh /configs/sgi_prism.sh
 
   links:
-    - endpoints: ["R01.LBN:eth1", "R01.NY:eth1"]
-    - endpoints: ["R01.LBN:eth2", "R01.MSK:eth2"]
-    - endpoints: ["R01.LBN:eth3", "R01.HKI:eth3"]
     - endpoints: ["R01.SPB:eth1", "R01.MSK:eth1"]
     - endpoints: ["R01.SPB:eth2", "R01.HKI:eth2"]
     - endpoints: ["R01.SPB:eth3", "PC1:eth1"]
+    - endpoints: ["R01.LBN:eth1", "R01.NY:eth1"]
+    - endpoints: ["R01.LBN:eth2", "R01.MSK:eth2"]
+    - endpoints: ["R01.LBN:eth3", "R01.HKI:eth3"]
     - endpoints: ["R01.NY:eth2", "R01.LND:eth2"]
     - endpoints: ["R01.NY:eth3", "SGI_Prism:eth1"]
     - endpoints: ["R01.LND:eth1", "R01.HKI:eth1"]
@@ -124,8 +125,8 @@ remove admin
 
 Далее создаю ip-адреса на интерфейсах роутера согласно схеме:
 ```
-/ip address add address=10.0.17.2/24 interface=ether2
-/ip address add address=10.0.16.2/24 interface=ether3
+/ip address add address=10.0.17.6/24 interface=ether2
+/ip address add address=10.0.16.6/24 interface=ether3
 /ip address add address=192.168.20.1/24 interface=ether4
 ```
 
@@ -186,7 +187,7 @@ add interface=ether3
 
 ```
 /interface vpls
-add name=vpls_SPB remote-peer=10.255.3.254 vpls-id=100:1 disabled=no
+add name=vpls_SPB remote-peer=10.255.5.254 vpls-id=100:1 disabled=no
 
 /interface bridge port
 add bridge=loopback interface=ether4
@@ -201,7 +202,7 @@ add bridge=loopback interface=vpls_SPB
 
 ip link set eth1 up
 udhcpc -i eth1 -q
-ip route del default via 172.20.0.1 dev eth0
+ip route del default via 172.30.0.1 dev eth0
 ```
 
 # Результаты
