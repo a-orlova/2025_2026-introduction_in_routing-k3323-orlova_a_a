@@ -210,7 +210,7 @@ add interface=SGIPC bridge=vpn
 
 ### Конфигурация ПК
 
-Скрипт для пк1 и SGI Prism аналогичен предыдущим работам - сначала включается нужный сетевой интерфейс, потом запускается dhcp-клиент на этом интерфейсе, также удаляется стандартный маршрут по умолчанию, потому что он является приоритетным, и если его не убрать, сама сеть будет перехватывать все запросы, и компьютеры не смогут общаться
+Скрипт для пк1 и SGI Prism аналогичен предыдущим работам - запускается dhcp-клиент на нужном интерфейсе, а также удаляется стандартный маршрут по умолчанию, потому что он является приоритетным, и если его не убрать, сама сеть будет перехватывать все запросы, и компьютеры не смогут общаться
 ```
 #!/bin/sh
 ip route del default via 172.16.16.1 dev eth0
@@ -221,35 +221,41 @@ udhcpc -i eth1
 
 Успешный деплой проекта:
 
-<img width="931" height="679" alt="image" src="https://github.com/user-attachments/assets/070479df-45ec-444e-9b26-6bf36d2ee238" />
+<img width="931" height="667" alt="image" src="https://github.com/user-attachments/assets/9038ec07-d7f5-49f5-81c7-5973cec9a072" />
 
 Успешная работоспособность OSPF:
 
-<img width="998" height="639" alt="image" src="https://github.com/user-attachments/assets/87773342-7b5c-488f-9863-accd61a3107c" />
+<img width="554" height="455" alt="image" src="https://github.com/user-attachments/assets/2885a78d-e7e5-451d-8341-a329c2935f2b" />
 
-<img width="978" height="657" alt="image" src="https://github.com/user-attachments/assets/132aa573-3d59-4a86-9ced-369b85b36834" />
+<img width="559" height="454" alt="image" src="https://github.com/user-attachments/assets/8e75208e-938c-4592-98a8-c3239a53618f" />
 
-<img width="981" height="581" alt="image" src="https://github.com/user-attachments/assets/6e6d9930-95ec-4641-8414-06990bb391d9" />
+<img width="649" height="435" alt="image" src="https://github.com/user-attachments/assets/675ac3b5-fc91-42f0-b62b-353aa16d6dca" />
 
-<img width="998" height="582" alt="image" src="https://github.com/user-attachments/assets/6b4a221f-c90a-472e-b1c9-66fbad519ef1" />
+<img width="646" height="449" alt="image" src="https://github.com/user-attachments/assets/a2e5d0af-aa7e-4dd0-ac4c-ad4375ebb7a5" />
 
-<img width="969" height="600" alt="image" src="https://github.com/user-attachments/assets/4baf6bc9-50ab-46ba-922d-8c001ddf23ff" />
+<img width="645" height="447" alt="image" src="https://github.com/user-attachments/assets/846e919b-858f-40c4-b933-2ca7ba9482c0" />
 
+<img width="639" height="447" alt="image" src="https://github.com/user-attachments/assets/8ab18ad9-bcc1-42e6-8248-8fb08223cbbd" />
 
 Успешная работоспособность MPLS:
 
-<img width="1045" height="381" alt="image" src="https://github.com/user-attachments/assets/6d384588-0e67-42d7-92d3-8646796b4eab" />
+<img width="1104" height="482" alt="image" src="https://github.com/user-attachments/assets/456d04af-79d2-4e37-a10c-9db5bca95ef3" />
 
-<img width="1042" height="453" alt="image" src="https://github.com/user-attachments/assets/52029ade-39e4-40a7-851d-d03e736e82e0" />
+<img width="1139" height="485" alt="image" src="https://github.com/user-attachments/assets/4f9e7ad0-86ec-4768-bfe7-dcf4103753c9" />
 
-<img width="1044" height="328" alt="image" src="https://github.com/user-attachments/assets/d16854e8-c330-4f9a-b449-bc43c337bc99" />
+<img width="1137" height="531" alt="image" src="https://github.com/user-attachments/assets/efbdb2af-f017-4a88-9b41-3e53472d268f" />
 
-<img width="1029" height="400" alt="image" src="https://github.com/user-attachments/assets/063ba0e8-d628-4e09-b06b-00d2aeb69686" />
+<img width="1142" height="511" alt="image" src="https://github.com/user-attachments/assets/c8f62455-33e1-4b19-9ef7-f64d3df207f7" />
 
-<img width="1029" height="401" alt="image" src="https://github.com/user-attachments/assets/3b6cb678-5c3a-4ed7-a8fc-889afa1c0b78" />
+<img width="1135" height="409" alt="image" src="https://github.com/user-attachments/assets/464e8f44-8a97-4b01-ae39-ed94624d1b37" />
 
+<img width="1134" height="467" alt="image" src="https://github.com/user-attachments/assets/ed58330c-d8ae-4777-9911-63a8102cf3a8" />
 
 Успешная работоспособность VPLS:
 
+<img width="409" height="134" alt="image" src="https://github.com/user-attachments/assets/29da6731-c95f-4cd7-bc71-aad60cd2f275" />
+<img width="436" height="148" alt="image" src="https://github.com/user-attachments/assets/17b29977-81ca-45f1-8d38-2ad77e26459c" />
 
+Успешный пинг между компьютерами:
 
+<img width="576" height="310" alt="image" src="https://github.com/user-attachments/assets/389945c8-649a-4ac3-8204-edd859514b17" />
