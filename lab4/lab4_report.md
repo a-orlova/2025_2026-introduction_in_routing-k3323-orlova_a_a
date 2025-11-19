@@ -57,15 +57,15 @@ topology:
     R01.LND:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.104
-      startup-config: config/p1/r01_LND.rsc
+      startup-config: config/p1/r_LND.rsc
     R01.LBN:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.105
-      startup-config: config/p1/r01_LBN.rsc
+      startup-config: config/p1/r_LBN.rsc
     R01.NY:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.106
-      startup-config: config/pt1/r01_NY.rsc
+      startup-config: config/pt1/r_NY.rsc
     PC1:
       kind: linux
       image: alpine:latest
@@ -103,7 +103,7 @@ topology:
     - endpoints: ["R01.NY:eth2","PC2:eth1"]
     - endpoints: ["R01.SVL:eth2","PC3:eth1"]
 ```
-Топология аналогична предыдущим лабораторным: 6 маршрутизаторов объединены в единую сеть через разные линковки, а также три линукс хоста - PC1, PC2, PC3. Все устройства управляются по mgmt-сети 172.16.16.0/24
+Топология для каждой части лабораторной аналогична предыдущим работам: 6 маршрутизаторов объединены в единую сеть через разные линковки, а также три линукс хоста - PC1, PC2, PC3. Все устройства управляются по mgmt-сети 172.16.16.0/24 в первой части, во второй - 172.16.18.0/24
 
 Также создаю схему сети в draw.io:
 
@@ -111,7 +111,7 @@ topology:
 
 С помощью команды sudo containerlab graph -t ~/containerlab/lab4/lab4.yaml -o lab4-topology.svg в браузере можно открыть готовую схему сети:
 
-
+<img width="887" height="729" alt="image" src="https://github.com/user-attachments/assets/67377282-ddfd-47a1-91a3-076a1bde7ebb" />
 
 ## Configs
 
