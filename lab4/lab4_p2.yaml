@@ -1,6 +1,6 @@
 name: lab4_p2
 mgmt:
-  network: alena_mgmt
+  network: alena_mgmt_p2
   ipv4-subnet: 172.16.18.0/24
 
 topology:
