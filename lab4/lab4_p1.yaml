@@ -24,15 +24,15 @@ topology:
     R01.LND:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.104
-      startup-config: config/p1/r01_LND.rsc
+      startup-config: config/p1/r_LND.rsc
     R01.LBN:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.105
-      startup-config: config/p1/r01_LBN.rsc
+      startup-config: config/p1/r_LBN.rsc
     R01.NY:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.106
-      startup-config: config/pt1/r01_NY.rsc
+      startup-config: config/pt1/r_NY.rsc
     PC1:
       kind: linux
       image: alpine:latest
