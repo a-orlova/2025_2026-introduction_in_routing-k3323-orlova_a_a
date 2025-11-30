@@ -32,7 +32,7 @@ topology:
     R01.NY:
       kind: vr-ros
       mgmt-ipv4: 172.16.16.106
-      startup-config: config/pt1/r_NY.rsc
+      startup-config: config/p1/r_NY.rsc
     PC1:
       kind: linux
       image: alpine:latest
