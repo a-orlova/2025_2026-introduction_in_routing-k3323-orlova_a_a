@@ -117,7 +117,138 @@ topology:
 
 ### Конфигурация роутеров
 
-### Кончигурация ПК
+На примере Нью-Йорка опишу конфиги для всех роутеров.
+
+Сначала меняю имя системы:
+```
+/system identity
+set name=r_NY
+```
+
+Добавляю нового пользователя, удаляю админа:
+```
+/user
+add name=alena password=alena group=full
+remove admin
+```
+
+Далее создаю ip-адреса на интерфейсах роутера согласно схеме:
+```
+/ip address
+add address=10.20.2.1/30 interface=ether2
+add address=192.168.11.1/24 interface=ether3
+```
+
+DHCP-сервер настраивается как обычно на роутерах NY, SPB и SVL:
+```
+/ip pool
+add name=dhcp-pool ranges=192.168.11.10-192.168.11.100
+
+/ip dhcp-server
+add address-pool=dhcp-pool disabled=no interface=ether3 name=dhcp-server
+
+/ip dhcp-server network
+add address=192.168.11.0/24 gateway=192.168.11.1
+```
+
+#### Настройка динамической маршрутизации OSPF
+
+bridge loopback создается на каждом роутере, такой виртуальный интерфейс никогда не отключается без внешнего вмешательства. Также каждому маршрутизатору даю loopback 10.255.255.x/32 (где x уникален для маршрутизатора) и использую его как router-id в OSPF:
+```
+/interface bridge
+add name=loopback
+
+/ip address 
+add address=10.255.255.6/32 interface=loopback network=10.255.255.6
+```
+
+Указываю в router-id адрес loopback интерфейса, создаю зону - так как роутеров всего 6, достаточно одной зоны для всех, и также указываю имя зоны, а в сетях все физические подключения:
+```
+/routing ospf instance
+add name=inst router-id=10.255.255.6
+
+/routing ospf area
+add name=backbone area-id=0.0.0.0 instance=inst
+
+/routing ospf network
+add area=backbone network=10.20.2.0/30
+add area=backbone network=192.168.11.0/24
+add area=backbone network=10.255.255.6/32
+```
+
+#### Настройка MPLS
+
+Здесь включаю протокол LDP на каждом роутере, прописываю LSR-id и указываю интерфейсы, на которых будет работать MPLS. transport-address пишу тот же, что и адрес loopback для удобства, в lsr-id тоже указываю его:
+
+```
+/mpls ldp
+set lsr-id=10.255.255.6
+set enabled=yes transport-address=10.255.255.6
+
+/mpls ldp interface
+add interface=ether2
+```
+
+#### Настройка iBGP
+
+Затем настраиваю iBGP: выбирается AS 65000, задаётся router-id, создаётся BGP-peer для подключения к Route Reflector через loopback, и анонсируется сеть loopback, чтобы BGP-сессия могла установиться независимо от физики:
+
+```
+/routing bgp instance
+set default as=65000 router-id=10.255.255.6
+
+/routing bgp peer
+add name=peerLND remote-address=10.255.255.4 address-families=l2vpn,vpnv4 remote-as=65000 update-source=loopback route-reflect=no
+
+/routing bgp network
+add network=10.255.255.0/24
+```
+
+#### Настройка VRF на внешних роутерах
+
+Далее создаю VRF: под него делается виртуальный интерфейс-мост, ему выдаётся адрес /32, и создаётся VRF с RD и RT 65000:100 — это идентификаторы, по которым маршруты данного офиса будут выделяться и обмениваться между PE-роутерами. В VRF включается импорт и экспорт RT, а также включается отдельный BGP-инстанс, который публикует подключённые маршруты VRF в BGP VPNv4. Таким образом, этот роутер становится PE-узлом и может передавать VRF-маршруты на RR и другим офисам для L3VPN.
+
+```
+/interface bridge 
+add name=br100
+/ip address
+add address=10.100.1.2/32 interface=br100
+/ip route vrf
+add export-route-targets=65000:100 import-route-targets=65000:100 interfaces=br100 route-distinguisher=65000:100 routing-mark=VRF_DEVOPS
+/routing bgp instance vrf
+add redistribute-connected=yes routing-mark=VRF_DEVOPS
+```
+
+#### Настройка VPLS
+
+Здесь в первую очередь по сравнению с предыдущей частью работы нужно поменять блок с настройкой MPLS: LDP включаю не только на ether2, но и на ether3, потому что ПК участвует в VPLS. VPLS работает как Ethernet-switch, и трафик от ПК к PE должен быть в MPLS-домене:
+
+```
+/mpls ldp
+set lsr-id=10.255.255.6
+set enabled=yes transport-address=10.255.255.6
+/mpls ldp interface
+add interface=ether2
+add interface=ether3
+```
+
+В этой части VRF полностью удаляется, и BGP используется только для VPLS. Создаю виртуальный мост vpn, затем к нему добавляется порт ether3, то есть локальная сеть офиса Нью-Йорка подключается в общий виртуальный коммутатор. После этого создаётся интерфейс BGP-VPLS, который использует тот же мост vpn и получает свои параметры VPLS. И также на мост назначается айпишник 10.100.1.6/24, чтобы этот PE мог быть достигнут внутри общей сети VPLS и чтобы компьютеры могли находиться в одном IP-сегменте:
+
+```
+/interface bridge
+add name=vpn
+
+/interface bridge port
+add interface=ether3 bridge=vpn
+
+/interface vpls bgp-vpls
+add bridge=vpn export-route-targets=65000:100 import-route-targets=65000:100 name=vpls route-distinguisher=65000:100 site-id=6
+
+/ip address
+add address=10.100.1.6/24 interface=vpn
+```
+
+### Конфигурация ПК
 
 Скрипт для всех трех ПК аналогичен предыдущим работам - запускается dhcp-клиент на нужном интерфейсе, а также удаляется стандартный маршрут по умолчанию, потому что он является приоритетным, и если его не убрать, сама сеть будет перехватывать все запросы, и компьютеры не смогут общаться
 
