@@ -277,4 +277,45 @@ udhcpc -i eth1
 
 Успешная работоспособность OSPF:
 
+<img width="649" height="419" alt="image" src="https://github.com/user-attachments/assets/7fc1af4b-23da-4e90-bb2e-e1884d7f5783" />
+
+<img width="663" height="452" alt="image" src="https://github.com/user-attachments/assets/e52e602b-97e5-4e44-9f58-572d20b3a635" />
+
+<img width="662" height="457" alt="image" src="https://github.com/user-attachments/assets/8b3cc52c-dd5a-4112-ae04-ddf1c909c44b" />
+
+<img width="644" height="402" alt="image" src="https://github.com/user-attachments/assets/f2d4e23c-ff7f-4ab4-b3c1-3c6f65a7ae00" />
+
+<img width="646" height="447" alt="image" src="https://github.com/user-attachments/assets/fb616761-2119-4fe6-963b-c4421fffa827" />
+
+<img width="640" height="403" alt="image" src="https://github.com/user-attachments/assets/e5271fb2-9378-4a89-8d1e-f5eabe08aea0" />
+
+Успешная работоспособность MPLS:
+
+<img width="1003" height="654" alt="image" src="https://github.com/user-attachments/assets/816540d4-f083-4853-bb48-6a3bdd5c4a8e" />
+
+<img width="1140" height="429" alt="image" src="https://github.com/user-attachments/assets/d7f0569d-96f6-4398-afe9-8e5daa85d727" />
+
+<img width="1144" height="554" alt="image" src="https://github.com/user-attachments/assets/09770f6b-5643-433e-a8c6-0ad12ae11197" />
+
+<img width="1143" height="529" alt="image" src="https://github.com/user-attachments/assets/608e7e66-2e37-4ac9-b015-49b1fa91f5b2" />
+
+<img width="1140" height="548" alt="image" src="https://github.com/user-attachments/assets/7beff1f1-609d-4dc7-b34e-6b7ab3cf94e2" />
+
+<img width="1141" height="642" alt="image" src="https://github.com/user-attachments/assets/fdb63002-3380-4311-b4e1-5d34476d4df1" />
+
+Успешная работоспособность iBPG:
+
+<img width="1172" height="187" alt="image" src="https://github.com/user-attachments/assets/ec4412a8-3d98-4d26-85b4-739b177910a4" />
+
+<img width="1172" height="191" alt="image" src="https://github.com/user-attachments/assets/59137aa9-6d63-44e9-84e4-a29b5f46c75f" />
+
+<img width="1171" height="187" alt="image" src="https://github.com/user-attachments/assets/6f96e791-8ec1-4093-ba8b-a527257bf679" />
+
+Успешная работоспособность VRF:
+
+<img width="982" height="263" alt="image" src="https://github.com/user-attachments/assets/16f44690-3fd6-4562-9252-a4ef2f053704" />
+
+<img width="967" height="246" alt="image" src="https://github.com/user-attachments/assets/45283fbb-2bca-4331-9d09-8ca541046f5a" />
+
+<img width="968" height="246" alt="image" src="https://github.com/user-attachments/assets/fa770bb1-e1b5-41b2-9eb5-73f3ef5cfc3b" />
 
