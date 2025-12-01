@@ -319,3 +319,15 @@ udhcpc -i eth1
 
 <img width="968" height="246" alt="image" src="https://github.com/user-attachments/assets/fa770bb1-e1b5-41b2-9eb5-73f3ef5cfc3b" />
 
+Успешная раздача айпи-адресов через dhcp-сервер на SPB роутере:
+
+<img width="898" height="121" alt="image" src="https://github.com/user-attachments/assets/7636711b-d213-43c3-8234-e38a5afee78a" />
+
+Успешная работоспособность VPLS:
+
+<img width="790" height="451" alt="image" src="https://github.com/user-attachments/assets/cd967cbe-a870-4b06-9b04-e62020ce7fc0" />
+
+<img width="791" height="438" alt="image" src="https://github.com/user-attachments/assets/e9b4a603-4f99-4b4a-a0ac-8fa68bc7e56e" />
+
+<img width="790" height="441" alt="image" src="https://github.com/user-attachments/assets/a89bd5d7-b31b-4202-b214-4623422c73bc" />
+
